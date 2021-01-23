@@ -16,3 +16,5 @@
 // });
 
 Route::get('/', 'DashboardController@index');
+
+Auth::routes();
