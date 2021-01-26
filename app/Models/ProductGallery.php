@@ -5,17 +5,22 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-
-class Product extends Model
+class ProductGallery extends Model
 {
     use SoftDeletes;
-    protected $table = 'products';
+    protected $table = 'product_galeries';
     // protected $fillabe = ['name', 'slug', 'type', 'description', 'price', 'quantity'];
     protected $guarded = [''];
     protected $hidden = [];
 
-    public function galleries()
+    public function product()
     {
-        return $this->hasMany(ProductGallery::class, 'products_id');
+        return $this->belongsTo(Product::class, 'products_id', 'id');
+    }
+
+    public function getPhotoAttribute($value)
+    {
+
+        return url('storage/' . $value);
     }
 }
