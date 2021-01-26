@@ -22,20 +22,23 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @forelse($items as $item)
                                 <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
+                                    <td>{{$item->id}}</td>
+                                    <td>{{$item->name}}</td>
+                                    <td>{{$item->type}}</td>
+                                    <td>{{$item->price}}</td>
+                                    <td>{{$item->quantity}}</td>
                                     <td>
-                                        <a href="" class="btn btn-info btn-sm">
+
+                                        <a href="#" class="btn btn-info btn-sm">
                                             <i class="fa fa-picture-o"></i>
                                         </a>
-                                        <a href="" class="btn btn-primary btn-sm">
+                                        <a href="{{route('products.edit',$item->id)}}" class="btn btn-primary btn-sm">
                                             <i class="fa fa-pencil"></i>
                                         </a>
-                                        <form method="post" action="" class="d-inline">
+                                        <form method="post" action="{{route('products.destroy',$item->id)}}" class="d-inline">
+                                            @csrf
                                             @method('delete')
                                             <button class="btn btn-danger btn-sm">
                                                 <i class="fa fa-trash"></i>
@@ -43,6 +46,13 @@
                                         </form>
                                     </td>
                                 </tr>
+                                @empty
+                                <tr>
+                                    <td colspan="6" class="text-center p-5">
+                                        Data Tidak Ditemukan
+                                    </td>
+                                </tr>
+                                @endforelse
                             </tbody>
                         </table>
                     </div>
