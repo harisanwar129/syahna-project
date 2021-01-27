@@ -10,8 +10,8 @@ class ProductGallery extends Model
 {
     use SoftDeletes;
     protected $table = 'product_galeries';
-    // protected $fillabe = ['id', 'products_id', 'photo', 'is_default'];
-    protected $guarded = [''];
+    protected $fillable = ['id', 'products_id', 'photo', 'is_default'];
+    // protected $guarded = [''];
     protected $hidden = [];
 
     public function product()

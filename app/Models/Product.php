@@ -11,8 +11,8 @@ class Product extends Model
 {
     use SoftDeletes;
     protected $table = 'products';
-    // protected $fillabe = ['name', 'slug', 'type', 'description', 'price', 'quantity'];
-    protected $guarded = [''];
+    protected $fillable = ['id', 'name', 'slug', 'type', 'description', 'price', 'quantity'];
+    // protected $guarded = [''];
     protected $hidden = [];
 
     public function galleries()
