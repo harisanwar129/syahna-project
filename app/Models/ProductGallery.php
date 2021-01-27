@@ -5,11 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
+
 class ProductGallery extends Model
 {
     use SoftDeletes;
     protected $table = 'product_galeries';
-    // protected $fillabe = ['name', 'slug', 'type', 'description', 'price', 'quantity'];
+    // protected $fillabe = ['id', 'products_id', 'photo', 'is_default'];
     protected $guarded = [''];
     protected $hidden = [];
 
