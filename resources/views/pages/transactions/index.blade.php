@@ -6,7 +6,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="box-title">Daftar Barang</h4>
+                    <h4 class="box-title">Daftar Transaksi Masuk</h4>
                 </div>
                 <div class="card-body--">
                     <div class="table-stats order-table ov-h">
@@ -15,9 +15,10 @@
                                 <tr>
                                     <th>#</th>
                                     <th>Nama</th>
-                                    <th>Type</th>
-                                    <th>Price</th>
-                                    <th>Quantity</th>
+                                    <th>Email</th>
+                                    <th>Nomor</th>
+                                    <th>Total Transaksi</th>
+                                    <th>Status</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
@@ -26,18 +27,34 @@
                                 <tr>
                                     <td>{{$item->id}}</td>
                                     <td>{{$item->name}}</td>
-                                    <td>{{$item->type}}</td>
-                                    <td>{{$item->price}}</td>
-                                    <td>{{$item->quantity}}</td>
+                                    <td>{{$item->email}}</td>
+                                    <td>{{$item->number}}</td>
+                                    <td>Rp. {{$item->transactions_total}}</td>
+                                    <td>
+                                        @if($item->transactions_status == 'PENDING')
+                                        <span class="badge badge-info">
+                                            @elseif($item->transactions_status == 'SUCCESS')
+                                            <span class="badge badge-success">
+                                                @elseif($item->transactions_status == 'FAILED')
+                                                <span class="badge badge-info">
+                                                    @else
+                                                    <span>
+                                                        @endif
+                                                        {{$item->transactions_status}}
+                                                    </span>
+                                    </td>
                                     <td>
 
-                                        <a href="{{route('products.gallery',$item->id)}}" class="btn btn-info btn-sm">
-                                            <i class="fa fa-picture-o"></i>
+
+
+                                        <a href="#mymodal" data-remote="{{route('transactions.show', $item->id)}}" data-toggle="modal" data-target="#mymodal" data-title="Detail Transaksi{{$item->uuid}}" class="btn btn-info btn-sm">
+                                            <i class="fa fa-eye"></i>
                                         </a>
-                                        <a href="{{route('products.edit',$item->id)}}" class="btn btn-primary btn-sm">
+
+                                        <a href="{{route('transactions.edit',$item->id)}}" class="btn btn-primary btn-sm">
                                             <i class="fa fa-pencil"></i>
                                         </a>
-                                        <form method="post" action="{{route('products.destroy',$item->id)}}" class="d-inline">
+                                        <form method="post" action="{{route('transactions.destroy',$item->id)}}" class="d-inline">
                                             @csrf
                                             @method('delete')
                                             <button class="btn btn-danger btn-sm">
