@@ -36,7 +36,7 @@
                                             @elseif($item->transactions_status == 'SUCCESS')
                                             <span class="badge badge-success">
                                                 @elseif($item->transactions_status == 'FAILED')
-                                                <span class="badge badge-info">
+                                                <span class="badge badge-danger">
                                                     @else
                                                     <span>
                                                         @endif
@@ -48,7 +48,10 @@
                                     <a href="{{ route('transactions.status',$item->id) }}?status=SUCCESS" class="btn btn-success btn-sm">
                                         <i class="fa fa-check"></i>
                                     </a>
-                                    <a href="{{ route('transactions.status',$item->id)}}?status=FAILED" class="btn btn-warning btn-sm">
+                                    <a href="{{ route('transactions.status',$item->id) }}?status=PENDING" class="btn btn-warning btn-sm">
+                                        <i class="fa fa-pencil"></i>
+                                    </a>
+                                    <a href="{{ route('transactions.status',$item->id)}}?status=FAILED" class="btn btn-danger btn-sm">
                                         <i class="fa fa-times"></i>
                                     </a>
                                     @endif
