@@ -124,6 +124,7 @@
 @endsection
 
 @push('after-script')
+
 <script>
     jQuery(document).ready(function($) {
         "use strict";
@@ -132,21 +133,21 @@
         var piedata = [{
                 label: "Pending",
                 data: [
-                    [1, 32]
+                    [1, {{ $pie['pending']}} ]
                 ],
                 color: '#5c6bc0'
             },
             {
                 label: "Gagal",
                 data: [
-                    [1, 33]
+                    [1, {{$pie['failed']}}]
                 ],
                 color: '#ef5350'
             },
             {
                 label: "Sukses",
                 data: [
-                    [1, 35]
+                    [1, {{$pie['success']}}]
                 ],
                 color: '#66bb6a'
             }
@@ -368,3 +369,4 @@
         // Bar Chart #flotBarChart End
     });
 </script>
+@endpush
