@@ -47,7 +47,12 @@
 
 
 
-                                        <a href="#mymodal" data-remote="{{route('transactions.show', $item->id)}}" data-toggle="modal" data-target="#mymodal" data-title="Detail Transaksi{{$item->uuid}}" class="btn btn-info btn-sm">
+                                        <a href="#mymodal" 
+                                        data-remote="{{route('transactions.show', $item->id)}}" 
+                                        data-toggle="modal" 
+                                        data-target="#mymodal" 
+                                        data-title="Detail Transaksi{{$item->uuid}}" 
+                                        class="btn btn-info btn-sm">
                                             <i class="fa fa-eye"></i>
                                         </a>
 
