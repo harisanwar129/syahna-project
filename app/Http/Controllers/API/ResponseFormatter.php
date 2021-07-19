@@ -12,7 +12,7 @@ class ResponseFormatter
 
             'code'=>200,
             'status'=>'success',
-            'message'=>$null
+            'message'=>null
         ],
         'data'=>null
     ];
