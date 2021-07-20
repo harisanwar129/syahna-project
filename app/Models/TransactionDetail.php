@@ -10,7 +10,7 @@ class TransactionDetail extends Model
     use SoftDeletes;
 
     protected $table = 'transaction_details';
-    protected $fillable = ['id', 'transactions_id', 'products_status'];
+    protected $fillable = ['id', 'transactions_id', 'products_status','products_id'];
     // protected $guarded = [''];
     protected $hidden = [];
 

@@ -18,7 +18,7 @@ class CheckoutController extends Controller
 
         $transaction=Transaction::create($data);
         
-        foreach($request->transaction_detail as $product){
+        foreach($request->transaction_details as $product){
             $details[]= new TransactionDetail([
                 'transactions_id'=>$transaction->id,
                 'products_id'=>$product,
