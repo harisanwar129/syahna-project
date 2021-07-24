@@ -16,6 +16,7 @@ class CheckoutController extends Controller
         $data=$request->except('transaction_details');
         $data['uuid']='TRX'.mt_rand(10000,99999).mt_rand(100,999);
 
+
         $transaction=Transaction::create($data);
         
         foreach($request->transaction_details as $product){
@@ -25,6 +26,7 @@ class CheckoutController extends Controller
             ]);
 
             Product::find($product)->decrement('quantity');
+         
         }
 
         $transaction->details()->saveMany($details);
